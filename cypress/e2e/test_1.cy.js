@@ -1,12 +1,19 @@
+import { Login } from '../pages/Login';
+import { HomePage } from '../pages/HomePage';
+
+const LoginPage = new Login();
+const MyPage = new HomePage();
+
+
 describe('First test', () => {
 
     it('Visit site, log in and log out', () => {
-        cy.visit('https://www.edu.goit.global/account/login'),
-        cy.get('#user_email').type('user888@gmail.com'),
-        cy.get('#user_password').type('1234567890'),
-        cy.get('.eckniwg2').click(),
-        cy.get('#open-navigation-menu-mobile').click(),
-        cy.get(':nth-child(9) > .css-bve2vl').click()
+        LoginPage.navigate(),
+        LoginPage.getEmailInput().type('user888@gmail.com'),
+        LoginPage.getPasswordInput().type('1234567890'),
+        LoginPage.getLogInButton().click(),
+        MyPage.getMenuButton().click(),
+        MyPage.getLogOutButton1().click()
     });
 
     
